@@ -23,18 +23,39 @@ public class Paddle {
     public void update() {
 
         y += ySpeed;
-        if(Gdx.input.isKeyPressed(Input.Keys.W)) {
-            ySpeed = 2;
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            ySpeed = 10;
             // your actions
+        } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            ySpeed = -10;
+
+        }else if(y== 50 || y == 600) {
+        ySpeed = 0;
+    }
+        else {
+            ySpeed = 0;
         }
-        else if (Gdx.input.isKeyPressed(Input.Keys.S)){
-            ySpeed = -2;
+
+        if (y < 0 || y > Gdx.graphics.getHeight()) {
+            ySpeed = -ySpeed;
+
         }
-        else if (Gdx.input.isKeyPressed(Input.Keys.K)){
-            ySpeed = 2;
+    }
+
+    public void update2() {
+
+        y += ySpeed;
+        if (Gdx.input.isKeyPressed(Input.Keys.K)){
+            ySpeed = -10;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.I)){
-            ySpeed = -2;
+            ySpeed = 10;
+        }
+        else if(y == 50 || y == 600) {
+            ySpeed = 0;
+        }
+        else {
+            ySpeed = 0;
         }
 
         if (y < 0 || y > Gdx.graphics.getHeight()) {
@@ -44,8 +65,18 @@ public class Paddle {
     }
     public void draw(ShapeRenderer shape) {
 
-        shape.circle(x, y, size);
-        shape.rect(10, 60, length, width);
 
+        shape.rect(x,y,length, width);
+
+    }
+
+    public int yGetter()
+    {
+        return y;
+    }
+
+    public int xGetter()
+    {
+        return x;
     }
 }
