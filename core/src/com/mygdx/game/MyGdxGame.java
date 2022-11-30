@@ -23,15 +23,23 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create() {
 		shape = new ShapeRenderer();
-		ball = new Ball(0, 0, 12, 10, 10);
-		paddle1 = new Paddle(10,60,5,50,5);
-		paddle2 = new Paddle(600,50,5,50,5);
+		ball = new Ball(0, 0, 12, 5, 5);
+		paddle1 = new Paddle(0,60,25,50,50);
+		paddle2 = new Paddle(600,50,25,50,5);
 	}
 
 	@Override
 	public void render() {
 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		if ((5 == ball.xGetter() || 600 == ball.xGetter()) && (paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() <= ball.yGetter() + 200 )) {
+			ball.xSetter((ball.xSpeedGetter() * -1));
+
+		}
+		if (paddle2.xGetter() == ball.xGetter() && paddle2.yGetter() >= ball.yGetter() && paddle2.yGetter() <= ball.yGetter() + 200 ) {
+			ball.xSetter((ball.xSpeedGetter() * -1));
+
+		}
 		ball.update();
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		ball.draw(shape);

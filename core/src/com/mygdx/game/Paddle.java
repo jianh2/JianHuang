@@ -36,10 +36,12 @@ public class Paddle {
             ySpeed = 0;
         }
 
-        if (y < 0 || y > Gdx.graphics.getHeight()) {
+        if (y <= 0 || y > Gdx.graphics.getHeight()) {
             ySpeed = -ySpeed;
 
         }
+
+
     }
 
     public void update2() {
