@@ -9,7 +9,12 @@ public class Ball {
     int size;
     int xSpeed;
     int ySpeed;
-    int point;
+
+    int point1;
+
+    int point2;
+
+
     public Ball(int x, int y, int size, int xSpeed, int ySpeed) {
         this.x = x;
         this.y = y;
@@ -21,18 +26,27 @@ public class Ball {
         x += xSpeed;
         y += ySpeed;
         int randomStart = (int) (Math.random() * 150) + 250;
-        if (x < 0) {
 
-            point++;
-            System.out.print("Bounces:" + point);
+        if (x >= Gdx.graphics.getWidth()) {
+
+
+            x = 300;
+            y = 300;
+            point1++;
+            System.out.println("player1 point:" + point1);
+
 
         }
-        if (x < 0 || x > Gdx.graphics.getWidth()) {
+        if (x <= 0 ) {
 
-            xSpeed = -xSpeed;
+            x = 300;
+            y = 300;
+            point2++;
+            System.out.println("player2 point:" + point2);
 
 
         }
+
         if (y < 0 || y > Gdx.graphics.getHeight()) {
             ySpeed = -ySpeed;
         }
