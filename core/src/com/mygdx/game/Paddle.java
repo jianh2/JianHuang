@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class Paddle {
     int x;
     int y;
-    int size;
+    private double size;
     int xSpeed;
     int ySpeed;
     int length;

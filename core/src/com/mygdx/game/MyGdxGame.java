@@ -27,22 +27,34 @@ public class MyGdxGame extends ApplicationAdapter {
 		paddle1 = new Paddle(10,60,25,50,50);
 		paddle2 = new Paddle(Gdx.graphics.getWidth() -30,50,25,50,5);
 	}
+	// to string method
+
+
 
 	@Override
+
 	public void render() {
 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		if (paddle2.xGetter()  <= ball.xGetter() && paddle2.xGetter() + 30 >= ball.xGetter() && paddle2.yGetter() <= ball.yGetter() && paddle2.yGetter() <= ball.yGetter() + 60  ) {
+		if (paddle2.xGetter()  <= ball.xGetter() && paddle2.xGetter() + 30 >= ball.xGetter() && paddle2.yGetter() <= ball.yGetter() && paddle2.yGetter() <= ball.yGetter() + 50 || paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() >= ball.yGetter() + 100   ) {
 			ball.xSetter((ball.xSpeedGetter() * -1));
 
 		}
 
 
-		else if (paddle1.xGetter()  <= ball.xGetter() && paddle1.xGetter() + 30 >= ball.xGetter() && paddle1.yGetter() <= ball.yGetter() && paddle1.yGetter() <= ball.yGetter() + 60 ) {
+		else if (paddle1.xGetter()  <= ball.xGetter() && paddle1.xGetter() + 30 >= ball.xGetter() && paddle1.yGetter() <= ball.yGetter() && paddle1.yGetter() <= ball.yGetter() + 50 || paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() >= ball.yGetter() + 100 ) {
 			ball.xSetter((ball.xSpeedGetter() * -1));
 
 
 		}
+
+		if ((paddle2.yGetter() >= ball.yGetter() && paddle2.yGetter() >= ball.yGetter() + 100) || paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() >= ball.yGetter() + 100   );
+		{
+			ball.xSetter((ball.xSpeedGetter() * -1));
+			ball.xSetter((ball.xSpeedGetter() * -1));
+		}
+
+
 		ball.update();
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		ball.draw(shape);

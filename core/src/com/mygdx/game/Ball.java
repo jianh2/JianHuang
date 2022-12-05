@@ -25,13 +25,13 @@ public class Ball {
     public void update() {
         x += xSpeed;
         y += ySpeed;
-        int randomStart = (int) (Math.random() * 150) + 250;
+        int randomStart = (int) (Math.random() * 50) + 250;
 
         if (x >= Gdx.graphics.getWidth()) {
 
 
             x = 300;
-            y = 300;
+            y = randomStart;
             point1++;
             System.out.println("player1 point:" + point1);
 
@@ -40,7 +40,7 @@ public class Ball {
         if (x <= 0 ) {
 
             x = 300;
-            y = 300;
+            y = randomStart;
             point2++;
             System.out.println("player2 point:" + point2);
 
