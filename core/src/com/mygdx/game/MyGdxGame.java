@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.GL20;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class MyGdxGame extends ApplicationAdapter {
 	ShapeRenderer shape;
@@ -22,39 +23,32 @@ public class MyGdxGame extends ApplicationAdapter {
 	Random r = new Random();
 	@Override
 	public void create() {
+		Point pointSystem = new Point();
+		pointSystem.askPlayer1();
+		pointSystem.askPlayer2();
 		shape = new ShapeRenderer();
-		ball = new Ball(0, 0, 12, 5, 5);
-		paddle1 = new Paddle(10,60,25,50,50);
-		paddle2 = new Paddle(Gdx.graphics.getWidth() -30,50,25,50,5);
+		ball = new Ball(0, 0, 12, 5, 5, pointSystem.getPlayer1(), pointSystem.getPlayer2());
+		paddle1 = new Paddle(0,60,25,100,50);
+		paddle2 = new Paddle(Gdx.graphics.getWidth() -30,50,25,100,5);
 	}
-	// to string method
 
 
 
 	@Override
-
 	public void render() {
 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		if (paddle2.xGetter()  <= ball.xGetter() && paddle2.xGetter() + 30 >= ball.xGetter() && paddle2.yGetter() <= ball.yGetter() && paddle2.yGetter() <= ball.yGetter() + 50 || paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() >= ball.yGetter() + 100   ) {
+		if (paddle2.xGetter()  <= ball.xGetter() && paddle2.xGetter() + 30 >= ball.xGetter() && paddle2.yGetter() - 20 <= ball.yGetter() && paddle2.yGetter() + 120 >= ball.yGetter()  ) {
 			ball.xSetter((ball.xSpeedGetter() * -1));
 
 		}
 
 
-		else if (paddle1.xGetter()  <= ball.xGetter() && paddle1.xGetter() + 30 >= ball.xGetter() && paddle1.yGetter() <= ball.yGetter() && paddle1.yGetter() <= ball.yGetter() + 50 || paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() >= ball.yGetter() + 100 ) {
+		else if (paddle1.xGetter()  <= ball.xGetter() && paddle1.xGetter() + 30 >= ball.xGetter() && paddle1.yGetter() - 20 <= ball.yGetter() && paddle1.yGetter() + 120 >= ball.yGetter()  ) {
 			ball.xSetter((ball.xSpeedGetter() * -1));
 
 
 		}
-
-		if ((paddle2.yGetter() >= ball.yGetter() && paddle2.yGetter() >= ball.yGetter() + 100) || paddle1.yGetter() >= ball.yGetter() && paddle1.yGetter() >= ball.yGetter() + 100   );
-		{
-			ball.xSetter((ball.xSpeedGetter() * -1));
-			ball.xSetter((ball.xSpeedGetter() * -1));
-		}
-
-
 		ball.update();
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		ball.draw(shape);
@@ -63,6 +57,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		shape.end();
 		paddle1.update();
 		paddle2.update2();
+
 
 
 

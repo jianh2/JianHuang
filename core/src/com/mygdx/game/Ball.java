@@ -14,13 +14,17 @@ public class Ball {
 
     int point2;
 
+    String player1;
+    String player2;
 
-    public Ball(int x, int y, int size, int xSpeed, int ySpeed) {
+    public Ball(int x, int y, int size, int xSpeed, int ySpeed, String player1, String player2) {
         this.x = x;
         this.y = y;
         this.size = size;
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
+        this.player1 = player1;
+        this.player2 = player2;
     }
     public void update() {
         x += xSpeed;
@@ -33,7 +37,8 @@ public class Ball {
             x = 300;
             y = randomStart;
             point1++;
-            System.out.println("player1 point:" + point1);
+            System.out.println(player1 + ": " + point1 + " "  + player2 + ": " + point2);
+
 
 
         }
@@ -42,7 +47,7 @@ public class Ball {
             x = 300;
             y = randomStart;
             point2++;
-            System.out.println("player2 point:" + point2);
+            System.out.println(player1 + ": " + point1 + " " + player2 + ": " + point2);
 
 
         }

@@ -12,16 +12,8 @@ public class DesktopLauncher {
 
 
 	public static void main (String[] arg) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Welcome to the Game.");
-		System.out.println("Enter your name");
-		String name = scan.nextLine();
-		if (name.length() > 20)
-		{
-			System.out.println("Enter your name again.");
-		}
 
-		System.out.println("The controls are W,S,I,K.");
+		System.out.println("Player One's Controls: W, S\nPlayer Two's Controls: I, K");
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(144);
 		config.setTitle("My GDX Game");
