@@ -13,27 +13,34 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/** This is a class that does all the rendering for the pong game in a window
+ */
 public class MyGdxGame extends ApplicationAdapter {
+
 	ShapeRenderer shape;
 	ShapeRenderer shape2;
 	Ball ball;
 	Paddle paddle1;
 	Paddle paddle2;
-	ArrayList<Ball> balls = new ArrayList<>();
-	Random r = new Random();
+
+	/** the create method creates all the objects needed for the game
+	 *
+	 */
 	@Override
 	public void create() {
 		Point pointSystem = new Point();
 		pointSystem.askPlayer1();
 		pointSystem.askPlayer2();
 		shape = new ShapeRenderer();
-		ball = new Ball(0, 0, 12, 5, 5, pointSystem.getPlayer1(), pointSystem.getPlayer2());
+		ball = new Ball(0, 0, 12, 5, 5, pointSystem.toString(), pointSystem.getPlayer2());
 		paddle1 = new Paddle(0,60,25,100,50);
 		paddle2 = new Paddle(Gdx.graphics.getWidth() -30,50,25,100,5);
 	}
 
 
-
+	/** The render method is used to draw the shapes and detect when they hit the paddle and is suppose to bounce back
+	 *
+	 */
 	@Override
 	public void render() {
 

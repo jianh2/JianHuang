@@ -8,7 +8,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.game.MyGdxGame;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
+
+/**This is the runner class
+ * 
+ */
 public class DesktopLauncher {
+
 
 
 	public static void main (String[] arg) {
